@@ -25,10 +25,12 @@ function generatePassword () {
 
     if (!numberPrompt) {
         alert ("Value required");
+        // generatePassword ();
         return null;
 
     } else if ( numberPrompt <8 || numberPrompt > 128) {
         alert ("Invalid");
+        // generatePassword ();
         return null;
  
     } else {
@@ -76,7 +78,7 @@ function generatePassword () {
         var randomLetter = passwordLength[Math.floor(Math.random() * passwordLength.length)];
         newPassword.push(randomLetter);
     }
-    console.log(passwordLength);
+    // console.log(passwordLength);
 
   // console log result and return new password
   console.log("Your Pasword is: " + newPassword);
