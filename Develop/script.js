@@ -21,27 +21,25 @@ generateBtn.addEventListener("click", writePassword);
 // function
 function generatePassword () {
     var numberPrompt = parseInt (window.prompt ("How many character would you like ? Min 8 - Max 128"));
-    console.log("password length" + numberPrompt );
+    console.log("password length " + numberPrompt);
 
     if (!numberPrompt) {
         alert ("Value required");
-        // generatePassword ();
         return null;
 
     } else if ( numberPrompt <8 || numberPrompt > 128) {
         alert ("Invalid");
-        // generatePassword ();
         return null;
  
     } else {
         var lowerCaseprompt = confirm("Would you like lower case letters ?");
-        console.log ("lowercase" + lowerCaseprompt);
+        console.log ("lowercase " + lowerCaseprompt);
         var upperCaseprompt = confirm("Would you like upper case letters ?");
-        console.log ("uppercase" + upperCaseprompt);
+        console.log ("uppercase " + upperCaseprompt);
         var numbersConfirm = confirm("Would you like numbers ?");
-        console.log ("numbers" + numbersConfirm);
+        console.log ("numbers " + numbersConfirm);
         var specialCharprompt = confirm("Would you like special characters ?");
-        console.log ("special characters" + specialCharprompt);
+        console.log ("special characters " + specialCharprompt);
     };
 
     // Empty variable for the password lenght and new password
@@ -73,12 +71,11 @@ function generatePassword () {
         console.log(passwordLength);
     }
   
-    // for Loop for chosen length random selection
+    // for Loop for chosen length
     for (var i = 0; i < numberPrompt; i++) {
         var randomLetter = passwordLength[Math.floor(Math.random() * passwordLength.length)];
         newPassword.push(randomLetter);
     }
-    // console.log(passwordLength);
 
   // console log result and return new password
   console.log("Your Pasword is: " + newPassword);
