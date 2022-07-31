@@ -1,45 +1,46 @@
 // Assignment code here
 var generateBtn = document.querySelector("#generate");
-
+var copyBtn = document.querySelector("#copy");
 // global var
-var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var number = ["0","1","2","3","4","5","6","7","8","9"];
-var specialChar = ["!","@","#","$","%","^","&","*","(",")","<",">","?","-","_","=","+","[","{","]","}"];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?", "-", "_", "=", "+", "[", "{", "]", "}"];
 
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
-  
-    passwordText.value = password; 
+
+    passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // function
-function generatePassword () {
-    var numberPrompt = parseInt (window.prompt ("How many character would you like ? Min 8 - Max 128"));
+function generatePassword() {
+    var numberPrompt = parseInt(window.prompt("How many character would you like? Min 8 - Max 128"));
     console.log("password length " + numberPrompt);
 
     if (!numberPrompt) {
-        alert ("Value required");
+        alert("Value required");
         return null;
 
-    } else if ( numberPrompt <8 || numberPrompt > 128) {
-        alert ("Invalid");
+    } else if (numberPrompt < 8 || numberPrompt > 128) {
+        alert("Invalid");
         return null;
- 
+
     } else {
-        var lowerCaseprompt = confirm("Would you like lower case letters ?");
-        console.log ("lowercase " + lowerCaseprompt);
-        var upperCaseprompt = confirm("Would you like upper case letters ?");
-        console.log ("uppercase " + upperCaseprompt);
-        var numbersConfirm = confirm("Would you like numbers ?");
-        console.log ("numbers " + numbersConfirm);
-        var specialCharprompt = confirm("Would you like special characters ?");
-        console.log ("special characters " + specialCharprompt);
+        var lowerCaseprompt = confirm("Would you like lower case letters?");
+        console.log("lowercase " + lowerCaseprompt);
+        var upperCaseprompt = confirm("Would you like upper case letters?");
+        console.log("uppercase " + upperCaseprompt);
+        var numbersConfirm = confirm("Would you like numbers?");
+        console.log("numbers " + numbersConfirm);
+        var specialCharprompt = confirm("Would you like special characters?");
+        console.log("special characters " + specialCharprompt);
+        document.querySelector("#copy").style.visibility="visible";
     };
 
     // Empty variable for the password lenght and new password
@@ -47,7 +48,7 @@ function generatePassword () {
     var newPassword = [];
 
     if (!lowerCaseprompt && !upperCaseprompt && !specialCharprompt && !numbersConfirm) {
-        alert ("value required");
+        alert("value required");
         return null;
     }
 
@@ -70,15 +71,30 @@ function generatePassword () {
         passwordLength = passwordLength.concat(specialChar);
         console.log(passwordLength);
     }
-  
+
     // for Loop for chosen length
     for (var i = 0; i < numberPrompt; i++) {
         var randomLetter = passwordLength[Math.floor(Math.random() * passwordLength.length)];
         newPassword.push(randomLetter);
     }
 
-  // console log result and return new password
-  console.log("Your Pasword is: " + newPassword);
-  return newPassword.join("");
-  
+    // console log result and return new password
+    console.log("Your Pasword is: " + newPassword);
+    return newPassword.join("");
 }
+
+function copyPassword() {
+    var copyText = document.querySelector("#password");
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+}
+
+copyBtn.addEventListener("click", copyPassword);

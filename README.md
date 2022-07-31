@@ -6,11 +6,13 @@ Create a webpage that will generate a random password with user input for length
 
 ## Built With
 
-HTML <br> css <br> javascript
+* HTML
+* CSS 
+* JavaScript
 
 ## Deployed Page
 
-https://jwputah.github.io/passgen/
+[Visit Password Generator](https://jwputah.github.io/passgen/)
 
 ##### contributions
 made with :heart: by Joshua Pace <br>
